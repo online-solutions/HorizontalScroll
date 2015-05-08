@@ -1,4 +1,4 @@
-package studio.plus.horizontalscroll;
+package studio.plus.horizontalscroll.activities;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,8 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
+import studio.plus.horizontalscroll.R;
+
 public class MainActivity extends Activity {
 
     LinearLayout asthmaActionPlan, controlledMedication, asNeededMedication,
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
     int parentLeft, parentRight;
     int mWidth;
     int currPosition, prevPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +53,10 @@ public class MainActivity extends Activity {
         Point point = new Point();
         display.getSize(point);
         mWidth = point.x;
-        viewWidth = mWidth / 3;
-        layouts = new ArrayList<LinearLayout>();
+//        viewWidth = mWidth / 3;
+        // change to fixed size
+        viewWidth = 300;
+        layouts = new ArrayList<>();
         params = new LayoutParams(viewWidth, LayoutParams.WRAP_CONTENT);
         asthmaActionPlan.setLayoutParams(params);
         controlledMedication.setLayoutParams(params);
@@ -98,10 +103,7 @@ public class MainActivity extends Activity {
         horizontalScrollView.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (gestureDetector.onTouchEvent(event)) {
-                    return true;
-                }
-                return false;
+                return gestureDetector.onTouchEvent(event);
             }
         });
     }
