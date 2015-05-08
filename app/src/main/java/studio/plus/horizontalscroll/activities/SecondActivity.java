@@ -39,7 +39,7 @@ public class SecondActivity extends ActionBarActivity {
 
         for (int i = 0; i < list.size(); i++) {
             View view = inflater.inflate(R.layout.custom_single_group, (LinearLayout) findViewById(R.id.group_wrapper), false);
-            if (i == 4) {
+            if (i == list.size() -1) {
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
                 params.setMargins(0, 0, 0, 0);
                 view.setLayoutParams(params);
